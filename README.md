@@ -1,6 +1,6 @@
-# Cambria Interaction
+# Cambria Interactive
 
-Cambria Interation, is bulit for interactive Cambria ecosystem. 
+Cambria Interactive, is bulit for interactive Cambria ecosystem. 
 
 [Artificial Cambrian Intelligence (ACI)](https://github.com/cambrian-org/ACI) has inspired this project substaintially, which is a simulation framework for **co-designing visual morphology and control policies** in embodied agents.
 It combines MuJoCo physics, configurable eye models, reinforcement learning, and evolutionary search to study how task demands and environment visibility shape vision.
