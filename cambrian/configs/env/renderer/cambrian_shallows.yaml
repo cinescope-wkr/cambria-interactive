@@ -1,0 +1,64 @@
+defaults:
+  - renderer
+
+theme: cambrian_shallows
+default_overlay_mode: "off"
+
+camera:
+  azimuth: 160.0
+  elevation: -22.0
+  distance: 7.5
+  lookat: [0.0, 0.0, 0.7]
+  trackbodyid: 1
+  type: 1 # mjCAMERA_TRACKING
+
+scene:
+  flags:
+    - 0 # mjRND_SHADOW
+    - 0 # mjRND_WIREFRAME
+    - 0 # mjRND_REFLECTION
+    - 0 # mjRND_ADDITIVE
+    - 0 # mjRND_SKYBOX
+    - 1 # mjRND_FOG
+    - 1 # mjRND_HAZE
+    - 0 # mjRND_SEGMENT
+    - 0 # mjRND_IDCOLOR
+    - 1 # mjRND_CULL_FACE
+
+scene_xml_overrides:
+  - mujoco:
+      - visual:
+          - map:
+              - fogstart: "1.0"
+              - fogend: "12.0"
+          - rgba:
+              - haze: "0.38 0.70 0.82 1"
+              - camera: "0.98 0.92 0.36 1"
+      - worldbody:
+          - light:
+              - name: "shallow_sun"
+              - pos: "0 0 6.0"
+              - dir: "0.1 0.0 -1"
+              - directional: "true"
+              - diffuse: "0.88 0.90 0.68"
+              - ambient: "0.22 0.30 0.34"
+              - specular: "0.14 0.16 0.14"
+              - castshadow: "false"
+          - light:
+              - name: "shallow_fill"
+              - pos: "-3.0 2.0 2.0"
+              - dir: "0.6 -0.2 -0.5"
+              - directional: "true"
+              - diffuse: "0.24 0.48 0.58"
+              - ambient: "0.0 0.0 0.0"
+              - specular: "0.05 0.07 0.07"
+              - castshadow: "false"
+          - light:
+              - name: "shallow_bloom"
+              - pos: "2.0 -2.0 1.5"
+              - dir: "-0.5 0.3 -0.2"
+              - directional: "true"
+              - diffuse: "0.12 0.22 0.28"
+              - ambient: "0.0 0.0 0.0"
+              - specular: "0.0 0.0 0.0"
+              - castshadow: "false"

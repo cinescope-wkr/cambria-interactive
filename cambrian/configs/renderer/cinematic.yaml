@@ -1,0 +1,17 @@
+# Alias-style config scaffold for cinematic rendering presets.
+# Canonical renderer group lives under /env/renderer.
+
+camera_preset: agent_fp_shallow_dof
+overlay_mode: minimal
+
+optical_genome_constraints:
+  abbe_number_range: [20.0, 65.0]
+  lens_thickness_max: 0.05
+  focus_distance_range: [0.25, 12.0]
+
+sensor:
+  photon_full_well: 6000.0
+  read_noise_std: 3.0
+  dark_current: 2.0
+  fixed_pattern_std: 0.01
+  analog_gain: 1.0

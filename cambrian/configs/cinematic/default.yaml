@@ -1,0 +1,9 @@
+# Optional global cinematic toggles.
+# Activate with: +cinematic=default
+
+enabled: true
+renderer: cinematic
+overlay_mode: minimal
+camera_preset: agent_fp_shallow_dof
+
+profile: deep_sea

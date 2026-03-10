@@ -1,0 +1,16 @@
+defaults:
+  - renderer
+
+# Backward-compatible alias. Prefer `record_source=agent_vision` together with an
+# actual scene theme such as `env/renderer=cambrian_shallows`.
+record_source: agent_vision
+default_overlay_mode: "off"
+
+vision:
+  agent_name: null
+  eye_name: null
+  output_size: [768, 768]
+  padding: 8
+  fps: 50
+  orientation_mode: presentation
+  labels: minimal

@@ -1,0 +1,62 @@
+defaults:
+  - object_sphere_textured_goal
+  - point_textured
+  - point_seeker_random
+
+overlay_color: [0.56, 0.86, 0.78, 1.0]
+
+custom:
+  top_rgba: "0.82 0.96 0.90 1.0"
+  texture_cmap: blackwhite
+
+xml:
+  overrides:
+    - mujoco:
+        - asset:
+            - material:
+                - name: ${parent:xml}_showcase_fin_mat
+                - rgba: "0.70 0.92 0.86 0.92"
+                - emission: "1.25"
+                - specular: "0.05"
+                - shininess: "0.12"
+            - material:
+                - name: ${parent:xml}_showcase_eye_mat
+                - rgba: "0.96 0.96 0.88 0.95"
+                - emission: "1.15"
+                - specular: "0.03"
+                - shininess: "0.06"
+        - worldbody:
+            - body:
+                - name: ${parent:xml}_body
+                - geom:
+                    - name: ${parent:xml}_dorsal_fin
+                    - type: capsule
+                    - fromto: "-0.10 0.0 0.48 0.18 0.0 0.82"
+                    - size: "0.045"
+                    - material: ${parent:xml}_showcase_fin_mat
+                    - contype: "0"
+                    - conaffinity: "0"
+                    - group: "3"
+                - geom:
+                    - name: ${parent:xml}_rear_fin
+                    - type: capsule
+                    - fromto: "-0.26 0.0 0.50 -0.10 0.0 0.70"
+                    - size: "0.035"
+                    - material: ${parent:xml}_showcase_fin_mat
+                    - contype: "0"
+                    - conaffinity: "0"
+                    - group: "3"
+                - site:
+                    - name: ${parent:xml}_showcase_eye_left
+                    - pos: "0.18 0.12 0.58"
+                    - type: ellipsoid
+                    - size: "0.04 0.025 0.025"
+                    - material: ${parent:xml}_showcase_eye_mat
+                    - group: "3"
+                - site:
+                    - name: ${parent:xml}_showcase_eye_right
+                    - pos: "0.18 -0.12 0.58"
+                    - type: ellipsoid
+                    - size: "0.04 0.025 0.025"
+                    - material: ${parent:xml}_showcase_eye_mat
+                    - group: "3"

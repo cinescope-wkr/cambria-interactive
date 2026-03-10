@@ -1,0 +1,16 @@
+defaults:
+  - optics
+
+instance:
+  _target_: cambrian.eyes.cinematic_optics.MjCambrianCinematicOpticsEye
+  _partial_: true
+
+cinematic_enabled: true
+optical_genome:
+  abbe_number: ${eval:'sum(${env.renderer.cinematic.optical_genome_constraints.abbe_number_range}) / 2'}
+  focus_distance: ${eval:'sum(${env.renderer.cinematic.optical_genome_constraints.focus_distance_range}) / 2'}
+  lens_thickness: ${eval:'${env.renderer.cinematic.optical_genome_constraints.lens_thickness_max} * 0.5'}
+  curvature_profile: [0.02, -0.005, 0.001]
+  depth_psf_bins: 6
+
+optical_genome_constraints: ${env.renderer.cinematic.optical_genome_constraints}

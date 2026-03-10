@@ -1,0 +1,40 @@
+defaults:
+  - point
+
+xml:
+  overrides:
+    - mujoco:
+        - asset:
+            - material:
+                - name: ${parent:xml}_mat
+                - emission: "1.25"
+                - rgba: "0.34 0.62 0.56 1"
+            - material:
+                - name: ${parent:xml}_direction_mat
+                - emission: "1.35"
+                - rgba: "0.90 0.76 0.44 1"
+            - material:
+                - name: ${parent:xml}_crest_mat
+                - emission: "1.15"
+                - rgba: "0.84 0.92 0.82 0.92"
+            - material:
+                - name: ${parent:xml}_tail_mat
+                - emission: "1.0"
+                - rgba: "0.58 0.78 0.70 0.88"
+        - worldbody:
+            - body:
+                - name: ${parent:xml}_body
+                - site:
+                    - name: ${parent:xml}_crest_site
+                    - pos: "0.02 0.0 0.23"
+                    - material: ${parent:xml}_crest_mat
+                    - size: "0.05 0.02 0.10"
+                    - type: "ellipsoid"
+                    - group: "3"
+                - site:
+                    - name: ${parent:xml}_tail_site
+                    - pos: "-0.22 0.0 0.02"
+                    - material: ${parent:xml}_tail_mat
+                    - size: "0.08 0.03 0.03"
+                    - type: "ellipsoid"
+                    - group: "3"

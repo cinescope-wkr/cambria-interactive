@@ -1,0 +1,253 @@
+defaults:
+  - cinematic
+
+theme: cambrian_shallows
+default_overlay_mode: "minimal"
+save_mode: MP4
+
+camera:
+  azimuth: 128.0
+  elevation: -34.0
+  distance: 4.8
+  lookat: [0.0, 0.0, 0.35]
+  trackbodyid: 1
+  type: 1 # mjCAMERA_TRACKING
+
+scene:
+  flags:
+    - 0 # mjRND_SHADOW
+    - 0 # mjRND_WIREFRAME
+    - 0 # mjRND_REFLECTION
+    - 0 # mjRND_ADDITIVE
+    - 0 # mjRND_SKYBOX
+    - 1 # mjRND_FOG
+    - 1 # mjRND_HAZE
+    - 0 # mjRND_SEGMENT
+    - 0 # mjRND_IDCOLOR
+    - 1 # mjRND_CULL_FACE
+
+cinematic:
+  enabled: true
+  camera_preset: agent_fp_shallow_dof
+  overlay_mode: minimal
+  sensor:
+    enabled: true
+    sensor:
+      enabled: true
+      photon_full_well: 5200.0
+      read_noise_std: 4.2
+      dark_current: 3.6
+      fixed_pattern_std: 0.018
+      analog_gain: 1.1
+
+scene_xml_overrides:
+  - mujoco:
+      - visual:
+          - map:
+              - fogstart: "0.25"
+              - fogend: "5.8"
+          - rgba:
+              - haze: "0.16 0.34 0.34 1"
+              - camera: "0.62 0.42 0.18 1"
+      - asset:
+          - material:
+              - name: "showcase_mat_base"
+              - rgba: "0.20 0.28 0.24 1"
+              - emission: "0.28"
+              - specular: "0.02"
+              - shininess: "0.03"
+          - material:
+              - name: "showcase_mat_ridge"
+              - rgba: "0.30 0.36 0.28 0.98"
+              - emission: "0.34"
+              - specular: "0.02"
+              - shininess: "0.02"
+          - material:
+              - name: "showcase_frond_mat"
+              - rgba: "0.26 0.40 0.32 0.92"
+              - emission: "0.44"
+              - specular: "0.04"
+              - shininess: "0.08"
+          - material:
+              - name: "showcase_shell_mat"
+              - rgba: "0.62 0.56 0.46 0.92"
+              - emission: "0.22"
+              - specular: "0.05"
+              - shininess: "0.10"
+          - material:
+              - name: "showcase_haze_teal_mat"
+              - rgba: "0.00 0.30 0.30 0.28"
+              - emission: "0.12"
+              - specular: "0.0"
+              - shininess: "0.0"
+          - material:
+              - name: "showcase_haze_amber_mat"
+              - rgba: "0.54 0.36 0.18 0.16"
+              - emission: "0.18"
+              - specular: "0.0"
+              - shininess: "0.0"
+      - worldbody:
+          - light:
+              - name: "showcase_sun"
+              - pos: "0 0 6.5"
+              - dir: "0.05 -0.02 -1"
+              - directional: "true"
+              - diffuse: "0.84 0.74 0.42"
+              - ambient: "0.10 0.14 0.13"
+              - specular: "0.10 0.08 0.05"
+              - castshadow: "false"
+          - light:
+              - name: "showcase_fill"
+              - pos: "-3.8 2.4 1.8"
+              - dir: "0.52 -0.22 -0.44"
+              - directional: "true"
+              - diffuse: "0.06 0.26 0.28"
+              - ambient: "0.0 0.0 0.0"
+              - specular: "0.02 0.03 0.03"
+              - castshadow: "false"
+          - light:
+              - name: "showcase_bloom"
+              - pos: "2.8 -2.6 1.6"
+              - dir: "-0.46 0.22 -0.24"
+              - directional: "true"
+              - diffuse: "0.18 0.14 0.08"
+              - ambient: "0.0 0.0 0.0"
+              - specular: "0.0 0.0 0.0"
+              - castshadow: "false"
+          - body:
+              - name: "showcase_haze_backdrop_far"
+              - pos: "0.0 11.0 2.0"
+              - geom:
+                  - name: "showcase_haze_backdrop_far_geom"
+                  - type: "box"
+                  - size: "12.0 0.08 4.0"
+                  - material: "showcase_haze_teal_mat"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_microbial_mat_main"
+              - pos: "0.0 0.0 -0.015"
+              - geom:
+                  - name: "showcase_microbial_mat_main_geom"
+                  - type: "box"
+                  - size: "7.6 7.0 0.03"
+                  - material: "showcase_mat_base"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_microbial_mat_ridge_a"
+              - pos: "-2.8 1.8 0.02"
+              - geom:
+                  - name: "showcase_microbial_mat_ridge_a_geom"
+                  - type: "capsule"
+                  - fromto: "-1.6 0.3 0.0 1.4 -0.2 0.08"
+                  - size: "0.24"
+                  - material: "showcase_mat_ridge"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_microbial_mat_ridge_b"
+              - pos: "1.9 -1.4 0.03"
+              - geom:
+                  - name: "showcase_microbial_mat_ridge_b_geom"
+                  - type: "capsule"
+                  - fromto: "-1.2 -0.2 0.0 1.6 0.3 0.08"
+                  - size: "0.28"
+                  - material: "showcase_mat_ridge"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_microbial_mat_wrinkle_left"
+              - pos: "-0.8 2.8 0.025"
+              - geom:
+                  - name: "showcase_microbial_mat_wrinkle_left_geom"
+                  - type: "ellipsoid"
+                  - size: "1.6 0.7 0.10"
+                  - euler: "0 0 22"
+                  - material: "showcase_mat_ridge"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_microbial_mat_wrinkle_right"
+              - pos: "2.4 1.1 0.025"
+              - geom:
+                  - name: "showcase_microbial_mat_wrinkle_right_geom"
+                  - type: "ellipsoid"
+                  - size: "1.8 0.8 0.10"
+                  - euler: "0 0 -18"
+                  - material: "showcase_mat_ridge"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_frond_left"
+              - pos: "-2.4 2.2 0.0"
+              - geom:
+                  - name: "showcase_frond_left_stem"
+                  - type: "capsule"
+                  - fromto: "-0.1 0.0 0.0 0.15 -0.08 1.3"
+                  - size: "0.05"
+                  - material: "showcase_frond_mat"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_frond_right"
+              - pos: "2.7 -2.1 0.0"
+              - geom:
+                  - name: "showcase_frond_right_stem"
+                  - type: "capsule"
+                  - fromto: "0.0 0.0 0.0 -0.22 0.08 1.1"
+                  - size: "0.05"
+                  - material: "showcase_frond_mat"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_shell_cluster"
+              - pos: "2.1 1.9 0.0"
+              - geom:
+                  - name: "showcase_shell_a"
+                  - type: "ellipsoid"
+                  - pos: "0.0 0.0 0.2"
+                  - size: "0.22 0.12 0.08"
+                  - euler: "10 30 15"
+                  - material: "showcase_shell_mat"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+              - geom:
+                  - name: "showcase_shell_b"
+                  - type: "ellipsoid"
+                  - pos: "0.35 -0.1 0.12"
+                  - size: "0.16 0.09 0.06"
+                  - euler: "-6 18 -10"
+                  - material: "showcase_shell_mat"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_amber_cloud"
+              - pos: "3.4 -0.8 1.1"
+              - geom:
+                  - name: "showcase_amber_cloud_geom"
+                  - type: "ellipsoid"
+                  - size: "1.6 0.6 0.8"
+                  - euler: "0 10 -18"
+                  - material: "showcase_haze_amber_mat"
+                  - contype: "0"
+                  - conaffinity: "0"
+                  - group: "3"
+          - body:
+              - name: "showcase_scene_anchor"
+              - pos: "0.0 0.0 0.45"
+          - camera:
+              - name: "showcase_scene_fixed"
+              - mode: "targetbodycom"
+              - target: "showcase_scene_anchor"
+              - pos: "-5.2 -4.4 2.6"

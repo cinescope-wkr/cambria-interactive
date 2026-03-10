@@ -1,0 +1,16 @@
+defaults:
+  - cambrian_shallows_showcase
+
+camera:
+  fixedcamid: -1 # resolved from camera_name in renderer.reset
+  trackbodyid: -1
+  type: 2 # mjCAMERA_FIXED
+
+camera_name: showcase_scene_fixed
+
+scene_options:
+  _target_: hydra_config.utils.instance_wrapper
+  instance:
+    _target_: mujoco.MjvOption
+  flags:
+    mujoco.mjtVisFlag.mjVIS_CAMERA: 0

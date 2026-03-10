@@ -1,0 +1,64 @@
+defaults:
+  - object_sphere_textured_adversary
+  - point_textured
+  - point_seeker_random
+
+overlay_color: [0.82, 0.52, 0.42, 1.0]
+
+custom:
+  top_rgba: "0.96 0.78 0.62 1.0"
+  texture_cmap: redblue
+
+xml:
+  overrides:
+    - mujoco:
+        - asset:
+            - material:
+                - name: ${parent:xml}_showcase_spine_mat
+                - rgba: "0.88 0.70 0.54 0.94"
+                - emission: "1.18"
+                - specular: "0.04"
+                - shininess: "0.08"
+            - material:
+                - name: ${parent:xml}_showcase_claw_mat
+                - rgba: "0.64 0.48 0.42 0.92"
+                - emission: "1.00"
+                - specular: "0.02"
+                - shininess: "0.04"
+        - worldbody:
+            - body:
+                - name: ${parent:xml}_body
+                - geom:
+                    - name: ${parent:xml}_spine_left
+                    - type: capsule
+                    - fromto: "-0.04 0.16 0.46 0.22 0.18 0.78"
+                    - size: "0.04"
+                    - material: ${parent:xml}_showcase_spine_mat
+                    - contype: "0"
+                    - conaffinity: "0"
+                    - group: "3"
+                - geom:
+                    - name: ${parent:xml}_spine_right
+                    - type: capsule
+                    - fromto: "-0.04 -0.16 0.46 0.22 -0.18 0.78"
+                    - size: "0.04"
+                    - material: ${parent:xml}_showcase_spine_mat
+                    - contype: "0"
+                    - conaffinity: "0"
+                    - group: "3"
+                - geom:
+                    - name: ${parent:xml}_claw_front
+                    - type: capsule
+                    - fromto: "0.18 0.0 0.42 0.46 0.0 0.32"
+                    - size: "0.05"
+                    - material: ${parent:xml}_showcase_claw_mat
+                    - contype: "0"
+                    - conaffinity: "0"
+                    - group: "3"
+                - site:
+                    - name: ${parent:xml}_showcase_tail
+                    - pos: "-0.30 0.0 0.52"
+                    - type: ellipsoid
+                    - size: "0.10 0.04 0.03"
+                    - material: ${parent:xml}_showcase_spine_mat
+                    - group: "3"

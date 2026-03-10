@@ -1,0 +1,13 @@
+# @package _global_
+
+eval_env:
+  renderer:
+    record_source: agent_vision
+    vision:
+      agent_name: null
+      eye_name: null
+      output_size: [768, 768]
+      padding: 8
+      fps: 50
+      orientation_mode: presentation
+      labels: minimal
